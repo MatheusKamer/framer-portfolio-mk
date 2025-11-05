@@ -3,7 +3,8 @@
 /* eslint-disable react/no-unescaped-entities */
 import Image from "next/image";
 import Link from "next/link";
-import { useState, type MouseEvent } from "react";
+import { useState } from "react";
+import type { MouseEvent } from "react";
 
 import { heroIcons } from "@/assets";
 import { useMotionValue, useTransform, motion, useSpring } from "framer-motion";
@@ -13,7 +14,7 @@ const Hero = () => {
     innerWidth: 0,
     innerHeight: 0,
   });
-  const [mouseIsMoving, setMouseIsMoving] = useState(false);
+  const [buttonHovered, setButtonHovered] = useState(false);
 
   const x = useMotionValue(0);
   const y = useMotionValue(0);
@@ -29,11 +30,11 @@ const Hero = () => {
       innerWidth: window.innerWidth,
       innerHeight: window.innerHeight,
     });
-    setMouseIsMoving(true);
   };
 
   const handleMouseLeave = () => {
-    setMouseIsMoving(false);
+    x.set(innerWidth / 2);
+    y.set(innerHeight / 2);
   };
 
   const { innerWidth, innerHeight } = windowOffset;
@@ -56,8 +57,8 @@ const Hero = () => {
           <motion.div
             className="flex items-center justify-center"
             style={{
-              rotateX: mouseIsMoving ? rotateX : 0,
-              rotateY: mouseIsMoving ? rotateY : 0,
+              rotateX: rotateX,
+              rotateY: rotateY,
             }}
           >
             <Image
@@ -68,15 +69,24 @@ const Hero = () => {
               priority={true}
               className="h-auto w-[150px]"
             />
-            <span className="absolute text-3xl font-semibold text-white">
+            <motion.span
+              className="absolute text-3xl font-semibold text-white"
+              initial={{ scale: 0 }}
+              animate={{
+                opacity: buttonHovered ? 1 : 0,
+                scale: buttonHovered ? 2 : 0,
+                y: buttonHovered ? -40 : 0,
+              }}
+              transition={{ opacity: { delay: 0.3 } }}
+            >
               Hi
-            </span>
+            </motion.span>
           </motion.div>
-          <h1 className="text-center text-3xl font-bold tracking-wider text-gray-500">
+          <h1 className="text-center text-xl sm:text-3xl font-bold tracking-wider text-gray-500">
             My name is Matheus Kamer &
           </h1>
           <p className="text-lg tracking-wider text-gray-700">
-            I'm a software developer 🚀
+            I'm a software engineer 🚀
           </p>
         </div>
         <div className="flex items-center justify-center gap-x-10 mt-8">
@@ -94,6 +104,8 @@ const Hero = () => {
           href="#"
           target="_blank"
           className="mx-auto mt-7 block w-max rounded-lg bg-red-400 px-3 py-1 font-light capitalize tracking-wider text-white hover:bg-red-500 transition-colors"
+          onMouseEnter={() => setButtonHovered(true)}
+          onMouseLeave={() => setButtonHovered(false)}
         >
           Talk to me
         </Link>
