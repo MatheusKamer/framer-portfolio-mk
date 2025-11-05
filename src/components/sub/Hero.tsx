@@ -6,7 +6,7 @@ import Link from "next/link";
 import { useState, type MouseEvent } from "react";
 
 import { heroIcons } from "@/assets";
-import { useMotionValue, useTransform, motion } from "framer-motion";
+import { useMotionValue, useTransform, motion, useSpring } from "framer-motion";
 
 const Hero = () => {
   const [windowOffset, setWindowOffset] = useState({
@@ -32,16 +32,24 @@ const Hero = () => {
     setMouseIsMoving(true);
   };
 
+  const handleMouseLeave = () => {
+    setMouseIsMoving(false);
+  };
+
   const { innerWidth, innerHeight } = windowOffset;
 
-  const rotateY = useTransform(x, [0, innerWidth], [-30, 30]);
-  const rotateX = useTransform(y, [0, innerHeight], [10, -50]);
+  const xSpring = useSpring(x, { stiffness: 100, damping: 10 });
+  const ySpring = useSpring(y, { stiffness: 100, damping: 10 });
+
+  const rotateY = useTransform(xSpring, [0, innerWidth], [-30, 30]);
+  const rotateX = useTransform(ySpring, [0, innerHeight], [10, -50]);
 
   return (
     <div
       className="h-screen grid place-items-center"
       onMouseMove={handleMouseMove}
       onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
     >
       <div>
         <div className="flex flex-col items-center justify-center gap-y-3 font-light capitalize">
