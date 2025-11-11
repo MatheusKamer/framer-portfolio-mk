@@ -3,12 +3,19 @@
 import Image from "next/image";
 import Heading from "./sub/Heading";
 
+import { motion } from "framer-motion";
+
 const Contact = () => {
   return (
     <div className="h-screen py-20 px-96">
       <Heading text="Get in touch" />
       <div className="w-full h-full my-auto flex flex-col lg:flex-row items-center justify-center lg:justify-between gap-x-0 lg:gap-x-20 gap-y-20">
-        <div>
+        <motion.div
+          initial={{ opacity: 0, y: 150 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.4 }}
+        >
           <Image
             src="/contact.gif"
             alt="Contact Gif"
@@ -17,8 +24,12 @@ const Contact = () => {
             unoptimized
             className="w-[400px] rounded-md opacity-80"
           />
-        </div>
-        <form
+        </motion.div>
+        <motion.form
+          initial={{ opacity: 0, x: 150 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.4 }}
           action=""
           className="w-full sm:w-[400px] lg:w-[600px] flex flex-col gap-3"
         >
@@ -50,7 +61,7 @@ const Contact = () => {
             className="w-full border border-yellow-500 rounded-md bg-yellow-600 px-4 py-2 text-sm tracking-wider outline-none font-light text-white hover:bg-yellow-500 transition-colors cursor-pointer"
             value="Send message"
           />
-        </form>
+        </motion.form>
       </div>
     </div>
   );
