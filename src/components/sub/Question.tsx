@@ -56,7 +56,7 @@ const Question = ({ index, question, answer }: iQuestion) => {
           stiffness: showAnswer ? 250 : 50,
           opacity: { delay: showAnswer ? 0.2 : 0 },
         }}
-        className="pl-8 text-lg font-extralight tracking-wide text-gray-900 first-letter:pl-3"
+        className="box-border origin-top pl-8 text-lg font-extralight tracking-wide text-gray-900 first-letter:pl-3"
       >
         {answer}
       </motion.p>
