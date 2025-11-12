@@ -7,7 +7,7 @@ import Question from "./sub/Question";
 
 const Questions = () => {
   return (
-    <div id="questions" className="py-20 px-96">
+    <div id="questions" className="py-20 ">
       <Heading text="Questions & Answers" />
       <div>
         <ul className="flex flex-col gap-y-3">

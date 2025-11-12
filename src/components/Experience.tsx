@@ -20,14 +20,14 @@ const Experience = () => {
   const scrollY = useSpring(scrollYProgress, { stiffness: 200, damping: 20 });
 
   return (
-    <div id="experience" className="relative py-20 px-96">
+    <div id="experience" className="relative py-20">
       <Heading text="Experience & Education" />
       <Image
         src="/education.png"
         alt="Experience & Education"
         width={400}
         height={400}
-        className="absolute hidden lg:block -top-4 right-96 opacity-70"
+        className="absolute hidden lg:block -top-4 right-0 opacity-70"
       />
       <div
         ref={containerRef}
