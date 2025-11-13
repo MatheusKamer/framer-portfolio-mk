@@ -20,16 +20,16 @@ const PricingPlans = () => {
               scale: { duration: 0.15 },
             }}
             key={index}
-            className={`w-[270px] flex flex-col gap-y-6 p-6 border border-red-400 rounded-xl text-gray-600 ${
+            className={`w-[270px] flex flex-col gap-y-6 p-6 border border-red-400 rounded-xl text-gray-600 dark:bg-zinc-700 transition-colors ${
               plan.title === "Premium"
                 ? "sm:w-[320px] xl:w-[370px] bg-white"
                 : "sm:w-[300px] xl:w-[350px] bg-zinc-50"
             }`}
           >
-            <h1 className="text-lg lg:text-3xl font-light tracking-wide text-center">
+            <h1 className="text-lg lg:text-3xl font-light tracking-wide text-center dark:text-white transition-colors">
               {plan.title}
             </h1>
-            <span className="text-xl lg:text-2xl text-center">
+            <span className="text-xl lg:text-2xl text-center dark:text-white transition-colors">
               {plan.pricing}
             </span>
             <ul className="flex flex-col gap-y-2">
@@ -44,13 +44,13 @@ const PricingPlans = () => {
                   >
                     {checkIcon}
                   </span>
-                  <li className="text-[15px] font-light tracking-wide">
+                  <li className="text-[15px] font-light tracking-wide dark:text-white transition-colors">
                     {feature}
                   </li>
                 </div>
               ))}
             </ul>
-            <p className="text-sm font-light text-center">
+            <p className="text-sm font-light text-center dark:text-gray-200 transition-colors">
               <span className="font-semibold">Ideal for:</span>{" "}
               {plan.recommended}
             </p>

@@ -83,10 +83,10 @@ const Hero = () => {
               Hi
             </motion.span>
           </motion.div>
-          <h1 className="text-center text-xl sm:text-3xl font-bold tracking-wider text-gray-500">
+          <h1 className="text-center text-xl sm:text-3xl font-bold tracking-wider text-gray-500 dark:text-white transition-colors">
             My name is Matheus Kamer &
           </h1>
-          <p className="text-lg tracking-wider text-gray-700">
+          <p className="text-lg tracking-wider text-gray-700 dark:text-gray-200 transition-colors">
             I'm a software engineer 🚀
           </p>
         </div>

@@ -23,11 +23,11 @@ const About = () => {
           height={400}
           className="hidden md:block md:w-[200px] lg:w-[300px]"
         />
-        <div className="relative max-w-[800px] rounded-xl bg-zinc-100 p-5 text-justify">
-          <span className="absolute -left-5 top-20 scale-[2.5] text-zinc-100 hidden md:block">
+        <div className="relative max-w-[800px] rounded-xl bg-zinc-100 p-5 text-justify dark:bg-zinc-700 transition-colors">
+          <span className="absolute -left-5 top-20 scale-[2.5] text-zinc-100 hidden md:block dark:text-zinc-700 transition-colors">
             {arrowLeftIcon}
           </span>
-          <p className="text-[14px] md:text-[16px] lg:text-lg font-light text-gray-700 first-letter:pl-3 lg">
+          <p className="text-[14px] md:text-[16px] lg:text-lg font-light text-gray-700 first-letter:pl-3 dark:text-white">
             {aboutText}
           </p>
           <Link

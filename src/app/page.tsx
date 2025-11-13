@@ -12,6 +12,7 @@ import PricingPlans from "@/components/PricingPlans";
 import Contact from "@/components/Contact";
 import Questions from "@/components/Questions";
 import NavBar from "@/components/NavBar";
+import Toggle from "@/components/sub/Toggle";
 
 export default function Home() {
   const [id, setId] = useState("0");
@@ -41,9 +42,9 @@ export default function Home() {
   }, []);
 
   return (
-    <>
+    <Toggle>
       <NavBar id={id} />
-      <div ref={componentRef} className="w-full">
+      <div ref={componentRef} className="w-min">
         <Hero />
         <About />
         <Experience />
@@ -54,6 +55,6 @@ export default function Home() {
         <Contact />
         <Questions />
       </div>
-    </>
+    </Toggle>
   );
 }

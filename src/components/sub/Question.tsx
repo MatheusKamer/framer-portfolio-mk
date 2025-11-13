@@ -33,7 +33,7 @@ const Question = ({ index, question, answer }: iQuestion) => {
       className="border border-yellow-500 p-1 rounded-lg"
     >
       <h1
-        className={`flex items-center text-xl text-gray-800 hover:text-yellow-600 font-extralight tracking-wide cursor-pointer ${
+        className={`flex items-center text-xl text-gray-800 hover:text-yellow-600 font-extralight tracking-wide cursor-pointer dark:text-white dark:hover:bg-zinc-700 dark:hover:text-yellow-600 ${
           showAnswer && "border-b text-yellow-600"
         }`}
         onClick={() => setShowAnswer(!showAnswer)}
@@ -56,7 +56,7 @@ const Question = ({ index, question, answer }: iQuestion) => {
           stiffness: showAnswer ? 250 : 50,
           opacity: { delay: showAnswer ? 0.2 : 0 },
         }}
-        className="box-border origin-top pl-8 text-lg font-extralight tracking-wide text-gray-900 first-letter:pl-3"
+        className="box-border origin-top pl-8 text-lg font-extralight tracking-wide text-gray-900 first-letter:pl-3 dark:text-gray-200"
       >
         {answer}
       </motion.p>

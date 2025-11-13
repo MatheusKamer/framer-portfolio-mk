@@ -54,7 +54,7 @@ const Reviews = () => {
                 if (element) slides.current.push(element);
               }}
               key={index}
-              className="absolute inset-0 flex flex-col items-center justify-center gap-y-4 lg:gap-y-7 border border-amber-500 bg-zinc-50 p-5 lg:p-14 rounded-xl"
+              className="absolute inset-0 flex flex-col items-center justify-center gap-y-4 lg:gap-y-7 border border-amber-500 bg-zinc-50 p-5 lg:p-14 rounded-xl dark:bg-zinc-700 transition-colors"
             >
               <Image
                 src={review.image}
@@ -66,7 +66,7 @@ const Reviews = () => {
               <h1 className="text-xl md:text-2xl text-center tracking-wider text-yellow-600">
                 {review.name}
               </h1>
-              <p className="text-sm md:text-lg text-justify font-extralight tracking-wide text-gray-600 first-letter:pl-2">
+              <p className="text-sm md:text-lg text-justify font-extralight tracking-wide text-gray-600 first-letter:pl-2 dark:text-white transition-colors">
                 {review.comment}
               </p>
               <div className="flex flex-col items-center justify-center gap-y-2">

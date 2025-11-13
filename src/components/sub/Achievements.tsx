@@ -17,7 +17,7 @@ const Achievements = ({ aboutData }: IAchievementsProps) => {
       </span>
       <h1 className="flex flex-col gap-y-2">
         <motion.span
-          className="text-xl lg:text-2xl font-light text-yellow-500"
+          className="text-xl lg:text-2xl font-light text-yellow-500 "
           onViewportEnter={() => {
             animate(number, aboutData?.amount ?? 0, {
               duration: 1.2,
@@ -28,7 +28,7 @@ const Achievements = ({ aboutData }: IAchievementsProps) => {
         >
           {rounded}
         </motion.span>
-        <span className="text-sm tracking-wide text-gray-500">
+        <span className="text-sm tracking-wide text-gray-500 dark:text-white transition-colors">
           {aboutData?.title}
         </span>
       </h1>

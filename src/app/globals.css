@@ -1,5 +1,6 @@
 @import "tailwindcss";
-
 html {
   scroll-behavior: smooth !important;
 }
+
+@custom-variant dark (&:where(.dark, .dark *));
