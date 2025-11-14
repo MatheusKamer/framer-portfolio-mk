@@ -3,7 +3,7 @@
 /* eslint-disable react/no-unescaped-entities */
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { MouseEvent } from "react";
 
 import { heroIcons } from "@/assets";
@@ -37,13 +37,24 @@ const Hero = () => {
     y.set(innerHeight / 2);
   };
 
+  useEffect(() => {
+    const w = window.innerWidth;
+    const h = window.innerHeight;
+
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setWindowOffset({ innerWidth: w, innerHeight: h });
+
+    x.set(w / 2);
+    y.set(h / 2);
+  }, []);
+
   const { innerWidth, innerHeight } = windowOffset;
 
   const xSpring = useSpring(x, { stiffness: 100, damping: 10 });
   const ySpring = useSpring(y, { stiffness: 100, damping: 10 });
 
-  const rotateY = useTransform(xSpring, [0, innerWidth], [-30, 30]);
-  const rotateX = useTransform(ySpring, [0, innerHeight], [10, -50]);
+  const rotateY = useTransform(xSpring, [0, innerWidth || 1], [-30, 30]);
+  const rotateX = useTransform(ySpring, [0, innerHeight || 1], [10, -50]);
 
   return (
     <div
@@ -54,7 +65,12 @@ const Hero = () => {
       onMouseLeave={handleMouseLeave}
     >
       <div>
-        <div className="flex flex-col items-center justify-center gap-y-3 font-light capitalize">
+        <motion.div
+          initial={{ opacity: 0, y: -100 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5 }}
+          className="flex flex-col items-center justify-center gap-y-3 font-light capitalize"
+        >
           <motion.div
             className="flex items-center justify-center"
             style={{
@@ -89,8 +105,13 @@ const Hero = () => {
           <p className="text-lg tracking-wider text-gray-700 dark:text-gray-200 transition-colors">
             I'm a software engineer 🚀
           </p>
-        </div>
-        <div className="flex items-center justify-center gap-x-10 mt-8">
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: 100 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5 }}
+          className="flex items-center justify-center gap-x-10 mt-8"
+        >
           {heroIcons.map((icon, index) => (
             <Link
               key={index}
@@ -100,8 +121,11 @@ const Hero = () => {
               {icon}
             </Link>
           ))}
-        </div>
-        <Link
+        </motion.div>
+        <motion.a
+          initial={{ opacity: 0, x: -30 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 0.7 }}
           href="#"
           target="_blank"
           className="mx-auto mt-7 block w-max rounded-lg bg-red-400 px-3 py-1 font-light capitalize tracking-wider text-white hover:bg-red-500 transition-colors"
@@ -109,7 +133,7 @@ const Hero = () => {
           onMouseLeave={() => setButtonHovered(false)}
         >
           Talk to me
-        </Link>
+        </motion.a>
       </div>
     </div>
   );

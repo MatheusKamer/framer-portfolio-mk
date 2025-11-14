@@ -13,6 +13,7 @@ import Contact from "@/components/Contact";
 import Questions from "@/components/Questions";
 import NavBar from "@/components/NavBar";
 import Toggle from "@/components/sub/Toggle";
+import Load from "@/components/sub/Load";
 
 export default function Home() {
   const [id, setId] = useState("0");
@@ -42,19 +43,22 @@ export default function Home() {
   }, []);
 
   return (
-    <Toggle>
-      <NavBar id={id} />
-      <div ref={componentRef} className="w-min">
-        <Hero />
-        <About />
-        <Experience />
-        <Skills />
-        <Reviews />
-        <Projects />
-        <PricingPlans />
-        <Contact />
-        <Questions />
-      </div>
-    </Toggle>
+    <>
+      <Load />
+      <Toggle>
+        <NavBar id={id} />
+        <div ref={componentRef} className="w-min">
+          <Hero />
+          <About />
+          <Experience />
+          <Skills />
+          <Reviews />
+          <Projects />
+          <PricingPlans />
+          <Contact />
+          <Questions />
+        </div>
+      </Toggle>
+    </>
   );
 }
